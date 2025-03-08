@@ -1,6 +1,6 @@
 import time 
 
-TIMESTEP = 1
+PAUSE = 1
 
 def main():
     # intialize sim time
@@ -17,8 +17,8 @@ def main():
         # increment sim time
         t += 1
 
-        # wait TIMESTEP
-        time.sleep(TIMESTEP)
+        # wait PAUSE seconds
+        time.sleep(PAUSE)
 
         # check terminal state
         if t > 10:
