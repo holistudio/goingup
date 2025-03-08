@@ -6,6 +6,7 @@ The box that carries passengers to their desired floors
 
 ### Properties
 
+ - `ID`
  - `floor_location`
  - `direction`
  - `available_floors`: a list of floors the elevator can stop at
