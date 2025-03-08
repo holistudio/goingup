@@ -7,6 +7,7 @@ The box that carries passengers to their desired floors
 ### Properties
 
  - `ID`
+ - `status`: `(stopped, moving)`
  - `floor_location`
  - `direction`
  - `available_floors`: a list of floors the elevator can stop at
@@ -20,6 +21,7 @@ The box that carries passengers to their desired floors
  - `set_direction()`
  - `move()`
  - `check_floor_stop()`
+ - `stop()`
  - `open_door()`
  - `close_door()`
  - `main_control()`: the main function that runs and determines what the elevator does at each timestep
