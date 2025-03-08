@@ -12,7 +12,9 @@ Another part of this idea that attracts me is that the simulation displays every
 
 This is meant to be a silly project with no real world applications. But it should be a great learning exercise for:
 
- - Refreshing myself on how to do objected oriented programming.
+ - Refreshing myself on how to do objected oriented programming and other best practices.
+   - Abstraction: What are the best ways to organize all the code, especially if new subclasses/versions of Agents and ControlSystems need to be created?
+   - Unit testing: What are basic ways to test this code?
  - Practice making the code readable/"professional" - hopefully since my mind isn't totally exhausted on just getting code to work or thinking about the ideas and has time to consider how the code can be more "elegant."
  - Learning C++...after I get this working in Python ;)
 
