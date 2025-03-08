@@ -57,6 +57,7 @@ A person that enters the building, gets to their desired floor on the elevator, 
  - `ID`
  - `status`: `(waiting, in elevator, doing business)`
  - `current_floor`: points to the current Floor object
+ - `current_elevator`: points to the current Elevator object Agent is in. `None` if not in elevator.
  - `target_floor_location`
  - `stay_time`: tracks how long the person is at their desired floor after they get out of the elevator
  - `stay_duration`: how long the person stays at their desired floor
@@ -68,13 +69,14 @@ A person that enters the building, gets to their desired floor on the elevator, 
  - `get_status()`
  - `set_status(index)`
  - `get_floor_location()`
+ - `set_floor_location(floor_id)`
  - `update_floor_location(floor_id)`
  - `check_elevators()`
  - `check_floor_buttons()`
  - `press_floor_button(key)`
  - `enter_elevator(elevator_id)`
- - `check_elevator_buttons()`
- - `press_elevator_button()`
+ - `check_elevator_buttons(elevator_id)`
+ - `press_elevator_button(floor_id)`
  - `check_target_floor()`: checks if the person is at their desired floor
  - `exit_elevator()`
  - `get_stay_time()`
