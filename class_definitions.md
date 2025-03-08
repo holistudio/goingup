@@ -44,7 +44,9 @@ A container for agents waiting for the elevator
  - `set_button_state(key)`: sets the status of the up/down button, where key=up/down button.
  - `update_state()`: main function that updates the list of occupants.
 
+## ControlSystem
 
+A dedicated object that tracks floor button statuses to decide which elevators to move in which direction.
 
 ## Agent 
 
@@ -80,3 +82,17 @@ A person that enters the building, gets to their desired floor on the elevator, 
  - `update_wait_time(index)`: update the wait time, where index is based on whether the person is at the ground floor or their target floor waiting for the elevator.
  - `update_total_stay()`
  - `act()`: the main function that controls how the person moves or waits for the elevator.
+
+## Simulation
+
+A dedicated object to communicate interactions between Agents and Floor/Elevators.
+
+### Properties
+
+ - `num_elevators`
+ - `num_floors`
+ - `timestep`
+
+### Functions
+ - `init()`: Creates all the things
+ - `step()`: Moves all the things one timestep forward
