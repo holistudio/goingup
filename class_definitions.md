@@ -42,6 +42,8 @@ A container for agents waiting for the elevator
 
 ### Functions
 
+ - `get_floor(relative)`: gets the Floor object above/below this floor
+ - `set_floor(relative, floor_id)`: gets the Floor object above/below this floor
  - `get_occupants()`
  - `check_occupants()`: check to see if Agents have left the floor or new Agents have entered it based on their `floor_location` and `status` property.
  - `set_occupants()`: updates list of occupants based on `check_occupants()`
