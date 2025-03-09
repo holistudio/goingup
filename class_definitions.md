@@ -17,6 +17,7 @@ The box that carries passengers to their desired floors
 
 ### Functions
  - `get_floor_location()`
+ - `set_floor_location(floor_id)`
  - `get_direction()`
  - `set_direction()`
  - `move()`
@@ -34,6 +35,8 @@ A container for agents waiting for the elevator
 ### Properties
 
  - `ID`: also the floor level. `ID=0` is the ground floor/lobby.
+ - `floor_above`: points to the Floor object above this floor. `None` if it's the top floor.
+ - `floor_below`: points to the Floor object below this floor. `None` for the ground floor.
  - `occupants`: a dynamic list of Agents on that particular floor
  - `button_state`: `{"up_button", "down_button"}`: dictionary of booleans showing whether up/down buttons are activated or not
 
