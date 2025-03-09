@@ -1,6 +1,5 @@
-class Floor():
+class Floor(object):
     def __init__(self, ID):
-        super.__init__(object)
         self.ID = ID
         self._floor_above = None
         self._floor_below = None
@@ -30,8 +29,33 @@ class Floor():
         else:
             raise TypeError('"floor" must be an instance of Floor or None')
 
+def test_floor_pointers():
+    # Create 3 Floors
+    floor_list = []
+    for i in range(3):
+        floor_list.append(Floor(ID=i))
+
+    # Assign pointers to floor above and below
+    # Assign pointers to floor above
+    for i in range(2):
+        floor_list[i].set_floor(floor_list[i+1])
+    # Assign pointers to floor below
+    for i in range(1,3):
+        floor_list[i].set_floor(floor_list[i-1], relative='below')
+    
+    # Print out each Floor's level, floor above and below
+    for floor_obj in floor_list:
+        floor_above = floor_obj.get_floor(relative='above')
+        floor_below = floor_obj.get_floor(relative='below')
+
+        floor_above_id = floor_above.ID if (floor_above != None) else None
+        floor_below_id = floor_below.ID if (floor_below != None) else None
+        
+        print(f"Floor {floor_obj.ID}: Floor above={floor_above_id}, Floor below={floor_below_id}")
+
 def test():
-    print('FLOOR CLASS BASIC TEST')
+    print('FLOOR CLASS TESTS')
+    test_floor_pointers()
     pass
 
 if __name__ == "__main__":
