@@ -16,7 +16,7 @@ class Floor(object):
         elif relative == 'below':
             return self._floor_below
         else:
-            return ValueError('Invalid "relative" value. Only (above, below) are valid values.')
+            raise ValueError('Invalid "relative" value. Only (above, below) are valid values.')
     
     def set_floor(self, floor, relative='above'):
         if isinstance(floor, Floor) or floor is None:
@@ -25,7 +25,7 @@ class Floor(object):
             elif relative == 'below':
                 self._floor_below = floor
             else:
-                return ValueError('Invalid "relative" value. Only (above, below) are valid values.')
+                raise ValueError('Invalid "relative" value. Only (above, below) are valid values.')
         else:
             raise TypeError('"floor" must be an instance of Floor or None')
 
@@ -50,7 +50,7 @@ def test_floor_pointers():
 
         floor_above_id = floor_above.ID if (floor_above != None) else None
         floor_below_id = floor_below.ID if (floor_below != None) else None
-        
+
         print(f"Floor {floor_obj.ID}: Floor above={floor_above_id}, Floor below={floor_below_id}")
 
 def test():
