@@ -1,5 +1,21 @@
 # Dev Log
 
+## 2025-03-09
+
+Added the Floor class and figured out how each Floor object can point to another Floor above and below it.
+
+I'm realizing I have no idea/forgot how to write tests for basic class definitions/functions. For now, I wrote a single test function that defines 3 Floor objects and links them together so they point to each other.
+
+As I thought about these pointers, I realized I didn't consider that the Floor should have a property pointing to the Elevator object, if the Elevator is on that Floor instance.
+
+I'm still deciding whether I need both a `Simulation` class and an `Environment` class...
+ - `Simulation` could handle just running the Environment one step at at time and take on the bulk of logging everything that happens at each timestep and displaying things on the terminal
+ - `Environment` handles the proper order of updating each state of Elevator/Floor/Agent
+
+Ah right...A Floor can have multiple elevators present...
+
+Things are getting really complicated! Adding a TODO list...
+
 ## 2025-03-08
 
 The goal: Make a simulation of people entering a building to go to a random floor, waiting for an elevator, staying for a while, and then coming back out. Display the environment only in the terminal. 
