@@ -39,16 +39,19 @@ A container for agents waiting for the elevator
  - `floor_below`: points to the Floor object below this floor. `None` for the ground floor.
  - `occupants`: a dynamic list of Agents on that particular floor
  - `button_state`: `{"up_button", "down_button"}`: dictionary of booleans showing whether up/down buttons are activated or not
+ - `current_elevator`: points to the Elevator on this floor. `None` if no Elevator on this floor.
 
 ### Functions
 
  - `get_floor(relative)`: gets the Floor object above/below this floor
- - `set_floor(relative, floor_id)`: gets the Floor object above/below this floor
+ - `set_floor(relative, floor)`: gets the Floor object above/below this floor
  - `get_occupants()`
  - `check_occupants()`: check to see if Agents have left the floor or new Agents have entered it based on their `floor_location` and `status` property.
  - `set_occupants()`: updates list of occupants based on `check_occupants()`
  - `get_button_state()`
  - `set_button_state(key)`: sets the status of the up/down button, where key=up/down button.
+ - `get_elevator()`
+ - `set_elevator(elevator)`
  - `update_state()`: main function that updates the list of occupants.
 
 ## ControlSystem
