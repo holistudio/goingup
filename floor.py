@@ -17,7 +17,7 @@ class Floor():
         elif relative == 'below':
             return self._floor_below
         else:
-            return 'Error: Invalid relative value. Only (above, below) are valid values.'
+            return ValueError('Invalid relative value. Only (above, below) are valid values.')
     
     def set_floor(self, floor, relative='above'):
         if isinstance(floor, Floor) or floor is None:
@@ -26,9 +26,9 @@ class Floor():
             elif relative == 'below':
                 self._floor_below = floor
             else:
-                return 'Error: Invalid relative value. Only (above, below) are valid values.'
+                return ValueError('Invalid relative value. Only (above, below) are valid values.')
         else:
-            raise TypeError("next must be an instance of Floor or None")
+            raise TypeError("floor must be an instance of Floor or None")
 
 def test():
     print('FLOOR CLASS BASIC TEST')
