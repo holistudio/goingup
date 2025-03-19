@@ -27,6 +27,7 @@ The box that carries passengers to their desired floors
  - `stop()`
  - `open_door()`
  - `close_door()`
+ - `check_next_floor()`: checks if the elevator can move up/down a floor or it has reached the top/bottom floor.
  - `main_control()`: the main function that runs and determines what the elevator does at each timestep
 
 
