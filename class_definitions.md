@@ -11,7 +11,7 @@ The box that carries passengers to their desired floors
  - `floor_location`
  - `direction`
  - `available_floors`: a list of floors the elevator can stop at
- - `button_states`
+ - `button_states`: a list of 0s or 1 of buttons that are active on the elevator panel. expected that the list of `button_states` is always the same size as `available_floors`
  - `door_state`
  - `passengers`: a dynamic list of agents on board
 
