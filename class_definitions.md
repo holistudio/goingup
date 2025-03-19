@@ -16,6 +16,8 @@ The box that carries passengers to their desired floors
  - `passengers`: a dynamic list of agents on board
 
 ### Functions
+ - `get_status()`
+ - `set_status(status_id)`
  - `get_floor_location()`
  - `set_floor_location(floor_id)`
  - `get_direction()`
