@@ -28,7 +28,7 @@ The box that carries passengers to their desired floors
  - `open_door()`
  - `close_door()`
  - `check_next_floor()`: checks if the elevator can move up/down a floor or it has reached the top/bottom floor.
- - `main_control()`: the main function that runs and determines what the elevator does at each timestep
+ - `update_state()`: the main function that runs and determines what the elevator does at each timestep
 
 
 ## Floor
@@ -55,7 +55,7 @@ A container for agents waiting for the elevator
  - `set_button_state(key)`: sets the status of the up/down button, where key=up/down button.
  - `get_elevator()`
  - `set_elevator(elevator)`
- - `update_state()`: main function that updates the list of occupants.
+ - `update_state()`: main function that updates the list of occupants and button_state.
 
 ## ControlSystem
 
@@ -96,7 +96,7 @@ A person that enters the building, gets to their desired floor on the elevator, 
  - `set_stay_time()`
  - `update_wait_time(index)`: update the wait time, where index is based on whether the person is at the ground floor or their target floor waiting for the elevator.
  - `update_total_stay()`
- - `act()`: the main function that controls how the person moves or waits for the elevator.
+ - `update_state()`: the main function that controls how the person moves or waits for the elevator.
 
 ## Simulation
 
