@@ -1,3 +1,5 @@
+from elevator import Elevator
+
 class Floor(object):
     def __init__(self, ID):
         self.ID = ID
@@ -8,6 +10,7 @@ class Floor(object):
             "up_button": False,
             "down_button": False
         }
+        self.current_elevators = []
         pass
     
     def get_floor(self, relative='above'):
@@ -28,6 +31,40 @@ class Floor(object):
                 raise ValueError('Invalid "relative" value. Only (above, below) are valid values.')
         else:
             raise TypeError('"floor" must be an instance of Floor or None')
+    
+    def get_elevator(self, id):
+        found_i = -1
+        elevator = None
+
+        # check current list of elevators for one with matching ID
+        for i,elev in enumerate(self.current_elevators):
+            if id == elev.ID:
+                found_i = i
+                elevator = elev
+        return elevator, found_i
+    
+    def set_elevator(self, elevator, on_off='on'):
+        if isinstance(elevator, Elevator) or elevator is None:
+            # check if elevator already exists in current_elevators
+            # if so, find its position index
+            elev, found_i = self.get_elevator(id=elevator.ID)
+            
+            if on_off == 'on':
+                # if the elevator isn't on the floor, append to the list of current_elevators
+                if found_i == -1:
+                    self.current_elevators.append(elevator)
+                else:
+                    raise LookupError('Attempting to add an elevator already on this floor.')
+            elif on_off == 'off':
+                # if the elevator isn't on the floor, remove from the list at the found position index
+                if found_i != -1:
+                    self.current_elevators.pop(found_i)
+                else:
+                    raise LookupError('Attempting to remove an elevator not on this floor.')
+            else:
+                raise ValueError('Invalid "On_off" value. Only (on, off) are valid values.')
+        else:
+            raise TypeError('"elevator" must be an instance of Elevator or None')
 
 def test_floor_pointers():
     # Create 3 Floors
