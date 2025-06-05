@@ -22,6 +22,8 @@ The box that carries passengers to their desired floors
  - `set_floor_location(floor_id)`
  - `get_direction()`
  - `set_direction()`
+ - `get_button_states()`
+ - `set_button_states()`
  - `move()`
  - `check_floor_stop()`
  - `stop()`
@@ -42,7 +44,7 @@ A container for agents waiting for the elevator
  - `floor_below`: points to the Floor object below this floor. `None` for the ground floor.
  - `occupants`: a dynamic list of Agents on that particular floor
  - `button_state`: `{"up_button", "down_button"}`: dictionary of booleans showing whether up/down buttons are activated or not
- - `current_elevator`: points to the Elevator on this floor. `None` if no Elevator on this floor.
+ - `current_elevators`: list of the Elevators on this floor. Empty list if no Elevator on this floor.
 
 ### Functions
 
@@ -53,7 +55,7 @@ A container for agents waiting for the elevator
  - `set_occupants()`: updates list of occupants based on `check_occupants()`
  - `get_button_state()`
  - `set_button_state(key)`: sets the status of the up/down button, where key=up/down button.
- - `get_elevator()`
+ - `get_elevator(id)`
  - `set_elevator(elevator)`
  - `update_state()`: main function that updates the list of occupants and button_state.
 
