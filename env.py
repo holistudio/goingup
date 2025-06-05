@@ -58,7 +58,7 @@ class Environment(object):
         # print_floors(self)
         init_elevators(self,num_elevs)
         print_floors(self)
-
+        print('')
         pass
 
     def step(self):

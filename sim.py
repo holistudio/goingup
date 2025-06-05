@@ -4,7 +4,7 @@ import env
 
 PAUSE = 1
 
-environment = env.Environment()
+environment = env.Environment(num_floors=6, num_elevs=2)
 
 def main():
 
@@ -12,6 +12,7 @@ def main():
     terminal = False
 
     print('### START SIMULATION ###')
+    print('')
     # simulation loop
     while not terminal:
         
