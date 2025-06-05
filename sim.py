@@ -1,6 +1,10 @@
 import time 
 
+import env
+
 PAUSE = 1
+
+environment = env.Environment()
 
 def main():
     # intialize sim time
@@ -13,6 +17,8 @@ def main():
     # simulation loop
     while not terminal:
         print(f'TIMESTEP = {t}')
+
+        environment.step()
 
         # increment sim time
         t += 1
