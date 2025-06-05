@@ -1,6 +1,8 @@
 # TODOS
-- [ ] System Design Diagram: What things get passed to which objects so that the entire thing works with the control system
-  - [ ] Consider defining a separate Environment class that the Simulation runs
+
+- [X] System Design Diagram: What things get passed to which objects so that the entire thing works with the control system
+
+- [X] Consider defining a separate Environment class that the Simulation runs
 
 - [ ] Code Elevator class for handling Floors only
 - [ ] Modify Floor to take on multiple Elevators
