@@ -8,10 +8,10 @@
 - [X] Environment records timestep and returns a terminal condition.
 
 - [ ] Test simulation (no ControlSystem or Agent): Get two Elevators to move up and down 6 Floors.
-  - [ ] Code Elevator class for handling button states
-  - [ ] Code Elevator class for handling Floors only
+  - [X] Code Elevator class for handling button states
+  - [X] Code Elevator class for handling Floors only
+  - [X] Modify Floor to take on multiple Elevators
   - [ ] Create 2 elevators and 6 floors when Environment initiates
-  - [ ] Modify Floor to take on multiple Elevators
   - [ ] Artificially set the elevator button so that the 6th floor button is activated
   - [ ] Elevators should automatically move up to the 6th floor
   - [ ] Button deactivates when reaches 6th floor
