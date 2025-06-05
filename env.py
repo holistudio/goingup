@@ -1,4 +1,5 @@
 from floor import Floor
+from elevator import Elevator
 
 class Environment(object):
     def __init__(self, num_floors, num_elevs, max_t=10):
@@ -7,6 +8,7 @@ class Environment(object):
         self.terminal = False # terminal state of env/simulation
 
         self.floors = []
+        self.elevators = []
 
         def init_floors(self, num_floors):
             print('# ENV INITIATING FLOORS #')
@@ -32,8 +34,29 @@ class Environment(object):
                 floor_below_id = floor_below.ID if (floor_below != None) else None
 
                 print(f"Floor {floor_obj.ID}: Floor above={floor_above_id}, Floor below={floor_below_id}")
+                print(f"Elevators: {[elev.ID for elev in floor_obj.current_elevators]}")
         
+        def init_elevators(self, num_elevs):
+            print(' ')
+            print('# ENV INITIATING ELEVATORS #')
+            print(' ')
+
+            # Create elevators
+            for i in range(num_elevs):
+                self.elevators.append(Elevator(ID=i,floors=[floor.ID for floor in self.floors]))
+            
+            # Assign elevator to their default floor
+            for elev in self.elevators:
+                elev_floor = elev.floor_location
+                # print(f'Elevator {elev.ID}, Floor={elev_floor}')
+                for floor in self.floors:
+                    if floor.ID == elev_floor:
+                        floor.set_elevator(elevator=elev)
+                        break
+
         init_floors(self, num_floors)
+        # print_floors(self)
+        init_elevators(self,num_elevs)
         print_floors(self)
 
         pass
