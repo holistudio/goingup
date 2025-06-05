@@ -1,5 +1,23 @@
 # Dev Log
 
+## 2025-06-04
+
+Finally circling back to this after some time, barely remembering what I worked on last and what I need to do next...
+
+Looks like having a `Simulation` and `Environment` class separately makes more sense. That way the while loop of the `sim.py` can just look like this:
+
+```
+...
+while (not terminal):
+   env.step()
+   t += 1
+   ...
+```
+
+and all the complicated order of `Floor`, `Elevator`, `Agent` can happen inside `env.step()`
+
+I can start on the bare minimum version of `env.step()` for now
+
 ## 2025-03-09
 
 Added the Floor class and figured out how each Floor object can point to another Floor above and below it.
