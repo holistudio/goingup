@@ -62,7 +62,7 @@ class Floor(object):
                 else:
                     raise LookupError('Attempting to remove an elevator not on this floor.')
             else:
-                raise ValueError('Invalid "On_off" value. Only (on, off) are valid values.')
+                raise ValueError('Invalid "on_off" value. Only (on, off) are valid values.')
         else:
             raise TypeError('"elevator" must be an instance of Elevator or None')
 
