@@ -3,5 +3,5 @@ class Environment(object):
         pass
 
     def step():
-        print('Environment step!')
+        print('# ENV STEP #')
         return
