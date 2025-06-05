@@ -5,6 +5,7 @@
 - [X] Consider defining a separate Environment class that the Simulation runs
 
 - [ ] Simple Environment class with a step function.
+- [ ] Environment records timestep and returns a terminal condition.
 
 - [ ] Code Elevator class for handling Floors only
 - [ ] Modify Floor to take on multiple Elevators
