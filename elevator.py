@@ -61,7 +61,6 @@ class Elevator(object):
         return self.button_states
     
     def move(self):
-        self.set_status(1)
         floor_idx = self.available_floors.index(self.floor_location)
         if self.direction == 'up':
             self.set_floor_location(floor_idx+1)
@@ -93,6 +92,63 @@ class Elevator(object):
         if self.direction == 'down':
             return (floor_idx-1) >= 0
         pass
+
+    def update_state(self, floor_button_state):
+        if self.status == 'stopped':
+
+            # check if target floor assigned
+            target_floor_assigned = (self.target_floor != None)
+            
+            # check if any buttons are activated
+            buttons_active = False
+            for b in self.button_states:
+                if b == 1:
+                    buttons_active = True
+            
+            need_to_move = target_floor_assigned or buttons_active
+
+            # if so, start moving in the appropriate direction
+            if need_to_move:
+                self.set_status(1)
+                floor_diff = self.target_floor - self.floor_location
+                if floor_diff > 0:
+                    self.set_direction(1) # go up
+                elif floor_diff < 0:
+                    self.set_direction(2) # go down
+                else:
+                    # target floor reached
+                    self.set_target_floor(None)
+                    self.set_status(0)
+                    self.set_direction(0)
+            else:
+                # TODO: Open the door, let Agents in/out...
+                pass
+            
+        if self.status == 'moving':
+            need_to_stop = False
+            # check if it needs to stop at this floor
+            # check floor's button
+            if self.direction == 'up' and floor_button_state['up_button']:
+                need_to_stop = True
+            if self.direction == 'down' and floor_button_state['down_button']:
+                need_to_stop = True
+            # check list of activated buttons inside elevator
+            if self.check_floor_stop():
+                need_to_stop = True
+            
+            if need_to_stop:
+                self.stop()
+                
+                # deactivate the elevator button for the current floor
+                floor_i = self.available_floors.index(self.floor_location)
+                self.set_button_states(i=floor_i, val=0)
+            else:
+                # if not move to the next floor in its direction
+                if self.check_next_floor():
+                    self.move()
+                else:
+                    self.stop()
+
 
 def test():
     print('ELEVATOR CLASS TESTS')
