@@ -11,6 +11,7 @@ The box that carries passengers to their desired floors
  - `floor_location`
  - `direction`
  - `available_floors`: a list of floors the elevator can stop at
+ - `target_floor`: the last floor the elevator will stop at (before an `Agent` presses a button inside or another target_floor is assigned by the `ControlSystem`)
  - `button_states`: a list of 0s or 1 of buttons that are active on the elevator panel. expected that the list of `button_states` is always the same size as `available_floors`
  - `door_state`
  - `passengers`: a dynamic list of agents on board
@@ -20,6 +21,8 @@ The box that carries passengers to their desired floors
  - `set_status(status_id)`
  - `get_floor_location()`
  - `set_floor_location(floor_id)`
+ - `get_target_floor()`
+ - `set_target_floor(floor_id)`
  - `get_direction()`
  - `set_direction()`
  - `get_button_states()`
@@ -61,7 +64,7 @@ A container for agents waiting for the elevator
 
 ## ControlSystem
 
-A dedicated object that tracks floor button statuses to decide which elevators to move in which direction.
+A dedicated object that tracks floor button statuses to decide which elevators to move in which direction towards a ultimate `target_floor` destination. 
 
 ## Agent 
 
