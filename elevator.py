@@ -13,7 +13,7 @@ class Elevator(object):
         self.direction = self._possible_direction[0]
 
         self.available_floors = floors
-        self.floor_location = self.available_floors[0]
+        self.current_floor = self.available_floors[0]
         self.target_floor = None
 
         self.button_states = [0 for i in floors]
@@ -30,12 +30,12 @@ class Elevator(object):
         self.status = self._possible_status[status_id]
         return self.status
     
-    def get_floor_location(self):
-        return self.floor_location
+    def get_current_floor(self):
+        return self.current_floor
     
-    def set_floor_location(self, floor_id):
-        self.floor_location = self.available_floors[floor_id]
-        return self.floor_location
+    def set_current_floor(self, floor_idx):
+        self.current_floor = self.available_floors[floor_idx]
+        return self.current_floor
     
     def get_target_floor(self):
         return self.target_floor
@@ -61,15 +61,16 @@ class Elevator(object):
         return self.button_states
     
     def move(self):
-        floor_idx = self.available_floors.index(self.floor_location)
+        floor_idx = self.available_floors.index(self.current_floor)
         if self.direction == 'up':
-            self.set_floor_location(floor_idx+1)
+            self.set_current_floor(floor_idx+1)
         if self.direction == 'down':
-            self.set_floor_location(floor_idx-1)
-        return self.floor_location
+            self.set_current_floor(floor_idx-1)
+        return self.current_floor
     
     def check_floor_stop(self):
-        button_check = self.button_states[self.floor_location]
+        floor_idx = self.available_floors.index(self.current_floor)
+        button_check = self.button_states[floor_idx]
         if button_check == 1:
             return True
         else:
@@ -86,14 +87,14 @@ class Elevator(object):
         self.door_state = self._possible_door_state[1]
 
     def check_next_floor(self):
-        floor_idx = self.available_floors.index(self.floor_location)
+        floor_idx = self.available_floors.index(self.current_floor)
         if self.direction == 'up':
             return (floor_idx+1) < len(self.available_floors)
         if self.direction == 'down':
             return (floor_idx-1) >= 0
         raise ValueError("Elevator direction is not set to 'up' or 'down' values")
 
-    def update_state(self, floor_button_state):
+    def update_state(self):
         if self.status == 'stopped':
 
             # check if target floor assigned
@@ -110,7 +111,7 @@ class Elevator(object):
             # if so, start moving in the appropriate direction
             if need_to_move:
                 self.set_status(1)
-                floor_diff = self.target_floor - self.floor_location
+                floor_diff = self.target_floor.ID - self.current_floor.ID
                 if floor_diff > 0:
                     self.set_direction(1) # go up
                 elif floor_diff < 0:
@@ -128,9 +129,9 @@ class Elevator(object):
             need_to_stop = False
             # check if it needs to stop at this floor
             # check floor's button
-            if self.direction == 'up' and floor_button_state['up_button']:
+            if self.direction == 'up' and self.current_floor.get_button_state()['up_button']:
                 need_to_stop = True
-            if self.direction == 'down' and floor_button_state['down_button']:
+            if self.direction == 'down' and self.current_floor.get_button_state()['down_button']:
                 need_to_stop = True
             # check list of activated buttons inside elevator
             if self.check_floor_stop():
@@ -140,12 +141,14 @@ class Elevator(object):
                 self.stop()
 
                 # deactivate the elevator button for the current floor
-                floor_i = self.available_floors.index(self.floor_location)
+                floor_i = self.available_floors.index(self.current_floor)
                 self.set_button_states(i=floor_i, val=0)
             else:
                 # if not move to the next floor in its direction
                 if self.check_next_floor():
+                    self.current_floor.set_elevator(elevator=self, on_off='off')
                     self.move()
+                    self.current_floor.set_elevator(elevator=self)
                 else:
                     self.stop()
 
