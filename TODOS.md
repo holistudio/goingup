@@ -11,10 +11,10 @@
   - [X] Code Elevator class for handling button states
   - [X] Code Elevator class for handling Floors only
   - [X] Modify Floor to take on multiple Elevators
-  - [ ] Create 2 elevators and 6 floors when Environment initiates
-  - [ ] Artificially set the elevator button so that the 6th floor button is activated
+  - [X] Create 2 elevators and 6 floors when Environment initiates
+  - [ ] Somehow pass the Floor's button states to the Elevator, so it can decide whether or not to stop.
+  - [ ] Artificially set the elevator's `target_floor` to the 6th floor
   - [ ] Elevators should automatically move up to the 6th floor
-  - [ ] Button deactivates when reaches 6th floor
   - [ ] For now, they should stop - need a ControlSystem to tell the Elevator when to move down
 
 - [ ] Agent class: Always checks if there is an elevator going down and targets the ground floor 0.
