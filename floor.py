@@ -6,7 +6,7 @@ class Floor(object):
         self._floor_above = None
         self._floor_below = None
         self.occupants = []
-        self.button_state ={
+        self.button_state = {
             "up_button": False,
             "down_button": False
         }
@@ -32,6 +32,17 @@ class Floor(object):
         else:
             raise TypeError('"floor" must be an instance of Floor or None')
     
+    def get_button_state(self):
+        return self.button_state
+    
+    def set_button_state(self, up_down, val=True):
+        if up_down == 'up':
+            self.button_state['up_button'] = val
+        elif up_down == 'down':
+            self.button_state['down_button'] = val
+        else:
+            raise ValueError('Invalid "up_down" value. Only (up, down) are valid values.')
+
     def get_elevator(self, id):
         found_i = -1
         elevator = None
