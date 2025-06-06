@@ -12,9 +12,12 @@
   - [X] Code Elevator class for handling Floors only
   - [X] Modify Floor to take on multiple Elevators
   - [X] Create 2 elevators and 6 floors when Environment initiates
-  - [ ] Somehow pass the Floor's button states to the Elevator, so it can decide whether or not to stop.
-  - [ ] Artificially set the elevator's `target_floor` to the 6th floor
-  - [ ] Elevators should automatically move up to the 6th floor
+  - [X] Somehow pass the Floor's button states to the Elevator, so it can decide whether or not to stop.
+  - [X] Artificially set the elevator's `target_floor` to the 6th floor
+  - [X] Elevator should automatically move up to the 6th floor
+  - [ ] More elegant ways of displaying each floor and elevator status
+  - [ ] Test case 2: two elevators moving at the same time to different floors
+  - [ ] Test case 3: two elevators moving in different directions?
   - [ ] For now, they should stop - need a ControlSystem to tell the Elevator when to move down
 
 - [ ] Agent class: Always checks if there is an elevator going down and targets the ground floor 0.
