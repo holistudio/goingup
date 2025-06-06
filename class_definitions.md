@@ -100,7 +100,7 @@ A person that enters the building, gets to their desired floor on the elevator, 
  - `update_total_stay()`
  - `update_state()`: the main function that controls how the person moves or waits for the elevator.
 
-## Simulation
+## Environment
 
 A dedicated object to communicate interactions between Agents and Floor/Elevators.
 
