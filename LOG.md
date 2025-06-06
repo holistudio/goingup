@@ -1,5 +1,39 @@
 # Dev Log
 
+## 2025-06-05
+
+A basic question that keeps coming up in my head is "How should the states of the different classes/objects get updated?" In other words, in `env.step()` is it as simple as
+
+```
+def step():
+   for elevator in elevators:
+      elevator.update_state()
+   for floor in floors:
+      floor.update_state()
+   for agent in agents:
+      agent.update_state()
+```
+
+My current guess is "No, it's more complicated than that." The specific properties of each Elevator, Floor, and Agent has to be updated in a specific logic...but I don't know for sure.
+
+One reason why it might be more complicated is because of "race conditions" between two elevators: Let's say the button going down is pressed on the 5th floor and then two elevators reach the 5th floor at the same time - ideally one elevator stops and serves the people on the 5th floor and the other one should just stop at the 5th floor and await commands from a control system.
+
+For now, I'm focusing on writing enough getters and setters for each class's properties and will see when I finally put everything together how complicated it gets. Right now the Environment is manually setting the elevators' directions and then moving them until they hit a floor with an active button.
+
+But this question will linger around until then, especially if I think there are some "checks" that each elevator should be doing on its own to decide what to do next - as if each elevator is its own "agent"...
+
+Or maybe it's a mix of the two ideas:
+ - ControlSystem may set a `target_floor` for each elevator to guide it to a particular floor where a person is waiting
+ - But the `Elevator` object still checks on its own in the `update_state()` function whether to stop at a current floor, either because a person inside the elevator has selected a floor to stop at or a person on an intermediate floor on the way is also waiting.
+
+
+Currently, that's how the the `Environment` and `Elevator` works:
+ 1. `Environment` sets a target floor for one of the elevators
+ 2. The elevator moves up automatically to that target floor and stops there via its `update_state()` function
+ 3. Since each Elevator has `current_floor` and `available_floors` properties, which are pointers to all `Floor` objects, this enables the Elevator's `update_state()` function to also updates the `Floor` object's list of elevators each time it moves out of one `Floor` and into another `Floor`.
+
+So far only a test was made for one elevator moving up to the top floor. More tests should follow where two elevators move at the same time, to different target floors. 
+
 ## 2025-06-04
 
 Finally circling back to this after some time, barely remembering what I worked on last and what I need to do next...
