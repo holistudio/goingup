@@ -14,6 +14,7 @@ class Elevator(object):
 
         self.available_floors = floors
         self.floor_location = self.available_floors[0]
+        self.target_floor = None
 
         self.button_states = [0 for i in floors]
 
@@ -36,6 +37,13 @@ class Elevator(object):
         self.floor_location = self.available_floors[floor_id]
         return self.floor_location
     
+    def get_target_floor(self):
+        return self.target_floor
+    
+    def set_target_floor(self, floor_id):
+        self.target_floor = floor_id
+        return self.target_floor
+
     def get_direction(self):
         return self.direction
     
