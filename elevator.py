@@ -91,7 +91,7 @@ class Elevator(object):
             return (floor_idx+1) < len(self.available_floors)
         if self.direction == 'down':
             return (floor_idx-1) >= 0
-        pass
+        raise ValueError("Elevator direction is not set to 'up' or 'down' values")
 
     def update_state(self, floor_button_state):
         if self.status == 'stopped':
@@ -138,7 +138,7 @@ class Elevator(object):
             
             if need_to_stop:
                 self.stop()
-                
+
                 # deactivate the elevator button for the current floor
                 floor_i = self.available_floors.index(self.floor_location)
                 self.set_button_states(i=floor_i, val=0)
