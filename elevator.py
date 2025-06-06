@@ -40,8 +40,8 @@ class Elevator(object):
     def get_target_floor(self):
         return self.target_floor
     
-    def set_target_floor(self, floor_id):
-        self.target_floor = floor_id
+    def set_target_floor(self, floor_idx):
+        self.target_floor = self.available_floors[floor_idx]
         return self.target_floor
 
     def get_direction(self):
