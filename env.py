@@ -63,14 +63,7 @@ class Environment(object):
     def print_floors(self):
         # Print out each Floor's level, floor above and below
         for floor_obj in self.floors:
-            floor_above = floor_obj.get_floor(relative='above')
-            floor_below = floor_obj.get_floor(relative='below')
-
-            floor_above_id = floor_above.ID if (floor_above != None) else None
-            floor_below_id = floor_below.ID if (floor_below != None) else None
-
-            print(f"Floor {floor_obj.ID}: Floor above={floor_above_id}, Floor below={floor_below_id}")
-            print(f"Elevators: {[elev.ID for elev in floor_obj.current_elevators]}")
+            floor_obj.display()
 
     def step(self):
         print(f'# ENV STEP =  {self.t} #')
