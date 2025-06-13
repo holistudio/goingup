@@ -65,7 +65,7 @@ class Environment(object):
         reverse_display.reverse()
         # Print out each Floor's level, floor above and below
         for floor_obj in reverse_display:
-            floor_obj.display(debug)
+            floor_obj.display(len(self.elevators),debug)
 
     def step(self):
         print(f'# ENV STEP =  {self.t} #')

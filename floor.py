@@ -77,8 +77,9 @@ class Floor(object):
         else:
             raise TypeError('"elevator" must be an instance of Elevator or None')
         
-    def display(self,debug=False):
+    def display(self,num_elevs,debug=False):
         elevs_display_list = [elev.display() for elev in self.current_elevators]
+        empty_elev_tubes = num_elevs - len(elevs_display_list)
         if not debug:
             print(f"|FL{self.ID} |", end=" ")
         else:
@@ -99,6 +100,8 @@ class Floor(object):
         
 
         if not debug:
+            for k in range(empty_elev_tubes):
+                print("[  ]",end="")
             print('] |')
         else:
             print(']')
