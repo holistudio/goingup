@@ -96,6 +96,16 @@ class Elevator(object):
         if self.direction == 'down':
             return (floor_idx-1) >= 0
         raise ValueError("Elevator direction is not set to 'up' or 'down' values")
+    
+    def display(self):
+        if self.direction == 'up':
+            up_down = '↑'
+        elif self.direction =='down':
+            up_down = '↓'
+        else:
+            up_down = '-'
+        display_text = f'[{self.ID}{up_down}]'
+        return display_text
 
     def update_state(self):
         if self.status == 'stopped':
