@@ -83,9 +83,9 @@ class Floor(object):
 
         floor_above_id = floor_above.ID if (floor_above != None) else None
         floor_below_id = floor_below.ID if (floor_below != None) else None
-        
+
         print(f"Floor {self.ID}: Floor above={floor_above_id}, Floor below={floor_below_id}")
-        print(f"Elevators: {[elev.ID for elev in self.current_elevators]}")
+        print(f"Elevators: {[elev.display() for elev in self.current_elevators]}")
 
 def test_floor_pointers():
     # Create 3 Floors
