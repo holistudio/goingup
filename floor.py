@@ -76,6 +76,16 @@ class Floor(object):
                 raise ValueError('Invalid "on_off" value. Only (on, off) are valid values.')
         else:
             raise TypeError('"elevator" must be an instance of Elevator or None')
+        
+    def display(self):
+        floor_above = self.get_floor(relative='above')
+        floor_below = self.get_floor(relative='below')
+
+        floor_above_id = floor_above.ID if (floor_above != None) else None
+        floor_below_id = floor_below.ID if (floor_below != None) else None
+        
+        print(f"Floor {self.ID}: Floor above={floor_above_id}, Floor below={floor_below_id}")
+        print(f"Elevators: {[elev.ID for elev in self.current_elevators]}")
 
 def test_floor_pointers():
     # Create 3 Floors
