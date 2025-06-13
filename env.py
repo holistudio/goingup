@@ -67,7 +67,8 @@ class Environment(object):
 
     def step(self):
         print(f'# ENV STEP =  {self.t} #')
-        
+        print('')
+
         # TODO: Add environment object updates here
 
         # Update elevators
@@ -83,5 +84,6 @@ class Environment(object):
         # stop simulation if timstep exceeds max_t
         if self.t >= self.max_t:
             self.terminal = True
+        print('')
         print('')
         return self.terminal
