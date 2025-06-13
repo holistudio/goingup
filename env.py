@@ -45,9 +45,9 @@ class Environment(object):
                         break
 
         init_floors(self, num_floors)
-        # self.print_floors()
+        # self.print_floors(debug=True)
         init_elevators(self,num_elevs)
-        self.print_floors()
+        self.print_floors(debug=True)
         print('')
 
         def elev_floor_test(self):
@@ -60,10 +60,10 @@ class Environment(object):
         elev_floor_test(self)
         pass
 
-    def print_floors(self):
+    def print_floors(self, debug=False):
         # Print out each Floor's level, floor above and below
         for floor_obj in self.floors:
-            floor_obj.display()
+            floor_obj.display(debug)
 
     def step(self):
         print(f'# ENV STEP =  {self.t} #')
