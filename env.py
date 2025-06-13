@@ -61,8 +61,10 @@ class Environment(object):
         pass
 
     def print_floors(self, debug=False):
+        reverse_display = self.floors.copy()
+        reverse_display.reverse()
         # Print out each Floor's level, floor above and below
-        for floor_obj in self.floors:
+        for floor_obj in reverse_display:
             floor_obj.display(debug)
 
     def step(self):
