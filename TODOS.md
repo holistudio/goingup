@@ -18,7 +18,7 @@
      - [ ] At ENV TIMESTEP = 0, no elevators should have moved yet!
      - [ ] When Elevator 0 gets to the 6th floor it should show 'none' direction at the next timestep
   - [X] More elegant ways of displaying each floor and elevator status
-  - [ ] For sake of clarity, if num_elevs=6, there should be 7 total floors but the top floor ID = 6 and so the displays shows `FL6`
+  - [X] For sake of clarity, if num_floors=6, there should be 7 total floors but the top floor ID = 6 and so the displays shows `FL6`
   - [ ] Test case 2: two elevators moving at the same time to different floors
   - [ ] Test case 3: two elevators moving in different directions?
   - [ ] For now, they should stop - need a ControlSystem to tell the Elevator when to move down

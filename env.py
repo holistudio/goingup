@@ -13,7 +13,7 @@ class Environment(object):
         def init_floors(self, num_floors):
             print('# ENV INITIATING FLOORS #')
             print(' ')
-            for i in range(num_floors):
+            for i in range(num_floors+1):
                 self.floors.append(Floor(ID=i))
 
             # Assign pointers to floor above and below
