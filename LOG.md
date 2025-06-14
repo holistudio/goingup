@@ -1,5 +1,27 @@
 # Dev Log
 
+## 2025-06-14
+
+Basically made things to show up pretty on the terminal.
+
+```
+# ENV STEP =  5 #
+
+|FL6 | Elevators: [[  ][  ]] |
+|FL5 | Elevators: [[0↑][  ]] |
+|FL4 | Elevators: [[  ][  ]] |
+|FL3 | Elevators: [[  ][  ]] |
+|FL2 | Elevators: [[  ][  ]] |
+|FL1 | Elevators: [[  ][  ]] |
+|FL0 | Elevators: [[1=][  ]] |
+```
+
+Now if I can just get the elevators to "stay in their lanes"...
+
+Also learned a bit about how the Elevator class should `update_state()`. Reversing the order of `if moving` and `if stopped` sections fixes issues relating movement and status: The elevator should perform stop-related operations immediately after it stops in the `if moving` section of the code.
+
+`floor_diff` should be checked/calculated in each local section of the code, as the current floor may have changed due to move() operations in other parts of the code.
+
 ## 2025-06-05
 
 A basic question that keeps coming up in my head is "How should the states of the different classes/objects get updated?" In other words, in `env.step()` is it as simple as
@@ -28,6 +50,7 @@ Or maybe it's a mix of the two ideas:
 
 
 Currently, that's how the the `Environment` and `Elevator` works:
+
  1. `Environment` sets a target floor for one of the elevators
  2. The elevator moves up automatically to that target floor and stops there via its `update_state()` function
  3. Since each Elevator has `current_floor` and `available_floors` properties, which are pointers to all `Floor` objects, this enables the Elevator's `update_state()` function to also updates the `Floor` object's list of elevators each time it moves out of one `Floor` and into another `Floor`.
