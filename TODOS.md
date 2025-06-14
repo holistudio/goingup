@@ -15,8 +15,8 @@
   - [X] Somehow pass the Floor's button states to the Elevator, so it can decide whether or not to stop.
   - [X] Artificially set the elevator's `target_floor` to the 6th floor
   - [X] Test case 1: Elevator should automatically move up to the 6th floor
-     - [ ] At ENV TIMESTEP = 0, no elevators should have moved yet!
-     - [ ] When Elevator 0 gets to the 6th floor it should show 'none' direction at the next timestep
+     - [X] At ENV TIMESTEP = 0, no elevators should have moved yet!
+     - [X] When Elevator 0 gets to the 6th floor it should show 'none' direction at the next timestep
   - [X] More elegant ways of displaying each floor and elevator status
   - [X] For sake of clarity, if num_floors=6, there should be 7 total floors but the top floor ID = 6 and so the displays shows `FL6`
   - [ ] Test case 2: two elevators moving at the same time to different floors
