@@ -103,7 +103,7 @@ class Elevator(object):
         elif self.direction =='down':
             up_down = '↓'
         else:
-            up_down = '-'
+            up_down = '⋅'
         display_text = f'[{self.ID}{up_down}]'
         return display_text
 
