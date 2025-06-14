@@ -103,7 +103,7 @@ class Elevator(object):
         elif self.direction =='down':
             up_down = '↓'
         else:
-            up_down = '⋅'
+            up_down = '='
         display_text = f'[{self.ID}{up_down}]'
         return display_text
 
@@ -146,7 +146,7 @@ class Elevator(object):
         if self.status == 'stopped':
             # check if target floor assigned
             target_floor_assigned = (self.target_floor != None)
-            
+
             # check if any buttons are activated
             buttons_active = False
             for b in self.button_states:
