@@ -1,10 +1,16 @@
 class Elevator(object):
     def __init__(self, ID, floors):
         """
+        Input:
+         - ID: unique identifier for this elevator instance
+         - floors: a list of Floor objects
+
         Properties:
          - ID: unique identifier for this elevator instance
-         - floors: a list of floors this elevator can go to
+         - available_floors: a list of floors this elevator can go to
+         TODO: Complete list based on properties implemented
         """
+        
         self.ID = ID
         self._possible_status = ('stopped', 'moving')
         self.status = self._possible_status[0]
@@ -27,6 +33,7 @@ class Elevator(object):
         return self.status
     
     def set_status(self, status_id):
+        # TODO: check status_id for ValueError
         self.status = self._possible_status[status_id]
         return self.status
     
@@ -34,23 +41,46 @@ class Elevator(object):
         return self.current_floor
     
     def set_current_floor(self, floor_idx):
+        """
+        Set current_floor to the Floor object within
+        list of available_floors
+
+        Input
+         - floor_idx: Index within vailable_floors list
+        """
+
+        # TODO: check floor_idx for ValueError
         self.current_floor = self.available_floors[floor_idx]
+
         return self.current_floor
     
     def get_target_floor(self):
         return self.target_floor
     
     def set_target_floor(self, floor_idx):
+        """
+        Set target_floor to the Floor object within
+        list of available_floors
+
+        Input
+         - floor_idx: Index within vailable_floors list
+        """
+
+        # If Elevator has no target Floor, set to None
         if floor_idx == None:
             self.target_floor = None
         else:
+            # Otherwise assign a new target Floor
+            # TODO: check floor_idx for ValueError
             self.target_floor = self.available_floors[floor_idx]
+
         return self.target_floor
 
     def get_direction(self):
         return self.direction
     
     def set_direction(self, direction_id):
+        # TODO: check direction_id for ValueError range (0-2)
         self.direction = self._possible_direction[direction_id]
         return self.direction
     
@@ -64,15 +94,34 @@ class Elevator(object):
         return self.button_states
     
     def move(self):
+        """
+        Move the Elevator one floor up or down based on
+        its current direction.
+        """
+
+        # Get index of current Floor
         floor_idx = self.available_floors.index(self.current_floor)
+
+        # Depending on current direction
         if self.direction == 'up':
+            # Go up to the next available floor up
             self.set_current_floor(floor_idx+1)
         if self.direction == 'down':
+            # Go up to the next available floor down
             self.set_current_floor(floor_idx-1)
+
         return self.current_floor
     
     def check_floor_stop(self):
+        """
+        Check if Elevator stops based on if any buttons 
+        have been pressed.
+        """
+
+        # Get index of current Floor
         floor_idx = self.available_floors.index(self.current_floor)
+
+        # Check if button for current Floor has been pressed
         button_check = self.button_states[floor_idx]
         if button_check == 1:
             return True
@@ -90,14 +139,34 @@ class Elevator(object):
         self.door_state = self._possible_door_state[1]
 
     def check_next_floor(self):
+        """
+        Check if there is another Floor to go to in 
+        Elevator's current direction
+
+        Return: 
+        False if Elevator is at the bottom- or top-most Floor
+        otherwise True.
+        """
+
+        # Get index of current Floor
         floor_idx = self.available_floors.index(self.current_floor)
+
+        # If the direction is up, check index against available_floors list length
         if self.direction == 'up':
             return (floor_idx+1) < len(self.available_floors)
+        
+        # If the direction is up, check index against available_floors list length
         if self.direction == 'down':
             return (floor_idx-1) >= 0
+        
+        # TODO: Revisit, may make more sense to check if an elevator is moving or not
         raise ValueError("Elevator direction is not set to 'up' or 'down' values")
     
     def display(self):
+        """
+        Display the Elevator in terminal.
+        Show if its moving and if so, in what direction
+        """
         if self.direction == 'up':
             up_down = '↑'
         elif self.direction =='down':
