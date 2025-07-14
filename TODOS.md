@@ -19,6 +19,8 @@
      - [X] When Elevator 0 gets to the 6th floor it should show 'none' direction at the next timestep
   - [X] More elegant ways of displaying each floor and elevator status
   - [X] For sake of clarity, if num_floors=6, there should be 7 total floors but the top floor ID = 6 and so the displays shows `FL6`
+  - [ ] Make a flow chart for Elevator.update_state()
+  - [ ] Shouldn't an Elevator ALWAYS check_next_floor() when it move()?
   - [ ] Test case 2: two elevators moving at the same time to different floors
   - [ ] Test case 3: two elevators moving in different directions?
   - [ ] For now, they should stop - need a ControlSystem to tell the Elevator when to move down
